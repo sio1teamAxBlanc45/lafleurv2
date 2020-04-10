@@ -120,6 +120,27 @@
                     </tbody>        
                 </table>                
  
+                <br>
+                <br>
+                
+                <div>
+                    <select name="produits" id="produits">
+                    <?php
+                        foreach ($rowall as $rowb){
+                        ?>
+                    <option value="<?php echo $rowb['pdt_designation'] ?>"><?php echo $rowb['pdt_designation'] ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>        
+                    <label for="quantite">Quantité :</label>
+                    <input type="text" id="quantite" name="quantite" placeholder="0" required>
+                
+                    <br>
+                    <br>
+                    
+                    <input type="button" value="Ajouter au panier">
+                </div>                    
                              
             </div>   
         </div>

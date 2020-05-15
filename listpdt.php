@@ -1,7 +1,13 @@
-  
 <?php
     require 'Connexion.php';
     session_start();
+ 
+    
+    
+    $sql2 = 'SELECT * FROM panier';
+    $panier = $connection -> query($sql2);
+    
+  
     
     if (isset($_SESSION['sql'])){
     
@@ -74,8 +80,18 @@
                 ?>
             </div>
             <hr class="new">
-            <form action="panier.php" method="get" class="bouton">
-              <input type="submit" value="Vider le panier">
+            <form action="listpdt.php" method="get" class="bouton">
+              <input type="submit" value="Vider le panier"
+                  <?php 
+                  
+                  $vider = 'DELETE FROM panier';
+                  $vidPanier = $connection->exec($vider);
+                  
+                  ?>
+              >
+              
+             
+              
             </form>
             <br>
             <form action="commande.php" method="get" class="bouton">
@@ -122,25 +138,30 @@
                 </table>                
  
                 <br>
-                <br>
+                <br> 
                 
                 <div>
-                    <select name="produits" id="produits">
-                    <?php
-                        foreach ($rowall as $rowb){
-                        ?>
-                    <option value="<?php echo $rowb['pdt_designation'] ?>"><?php echo $rowb['pdt_designation'] ?></option>
+                    <form action="panier.php" method="GET" class="button">
+                        <select name="produits" id="produits">
                         <?php
-                        }
-                        ?>
-                    </select>        
-                    <label for="quantite">Quantité :</label>
-                    <input type="text" id="quantite" name="quantite" placeholder="0" required>
+                            foreach ($rowall as $rowb){
+                            ?>
+                        <option value="<?php echo $rowb['pdt_ref'] ?>"><?php echo $rowb['pdt_designation'] ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>  
+                    
+                        <label for="quantite">Quantité :</label>
+                        <input type="text" id="quantite" name="quantite" placeholder="0" required >
                 
                     <br>
                     <br>
                     
-                    <input type="button" value="Ajouter au panier">
+                     
+                    <input type="submit" value="Ajouter au panier">
+                            
+                    </form>
                 </div>                    
                              
             </div>   
@@ -150,7 +171,7 @@
 
 
         <footer>
-            <h2 class="pied_page">® copyrights ... réalisé le </h2>
+            <h2 class="pied_page">® copyrights Votre nom réalisé le ...</h2>
         </footer>
         
     </body>

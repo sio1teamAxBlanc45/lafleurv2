@@ -35,7 +35,7 @@
 
             <div class="menu">                    
               <a class="onglets"> 
-                  <form >
+                  <form action="nous-ecrire.php">
                       <input type="hidden" name="ref" value=""><input type="submit" value="Nous écrire" class="link-lookalike link-lookalike-ecrire">
                   </form> 
                   <form action="accueil.php">

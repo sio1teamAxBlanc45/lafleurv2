@@ -39,6 +39,7 @@ footer{
 }
 
 
+
 .menu{
   background-color: #7fffd4;
   width: auto;
@@ -158,6 +159,12 @@ footer{
 
 .table-contenu{
   display: inline-table;
+  border-collapse: separate;
+  border: 2px solid #b2b2b2;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
 }
 
 .gauche{
@@ -187,4 +194,60 @@ hr.titre{
 
 form.bouton{
   text-align: center;
+}
+
+h4.titre_contenu{
+  font-weight: bold ;
+}
+
+tr.tab_bordure{
+  border: 2px solid black;
+}
+
+td.total{
+  text-align: right;
+}
+
+th.tab_ref{
+  column-width: 50px;
+}
+
+th.tab_des{
+  column-width: 300px;
+}
+
+th.tab_px{
+  column-width: 100px;
+  text-align: right;
+}
+
+th.tab_qte{
+  column-width: 60px;
+  text-align: right;
+}
+
+th.tab_mont{
+  column-width: 120px;
+  text-align: right;
+}
+
+td.tab_px{
+  text-align: right;
+}
+
+td.tab_qte{
+  text-align: right;
+}
+
+td.tab_mont{
+  text-align: right;
+}
+
+td.tab_montTot{
+  text-align: right;
+}
+
+textarea.message_mail{
+  align-content:flex-start;
+  overflow:auto;
 }

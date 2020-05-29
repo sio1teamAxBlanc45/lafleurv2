@@ -157,7 +157,13 @@ footer{
 }
 
 
-.table-contenu{
+table.table-contenu{
+  display: inline-table;
+  border-collapse: separate;
+  border-style: none;
+}
+
+table.table_contenu_commande{
   display: inline-table;
   border-collapse: separate;
   border: 2px solid #b2b2b2;

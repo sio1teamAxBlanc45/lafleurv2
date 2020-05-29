@@ -94,7 +94,7 @@
                        if ($nbligne !=0)
                         {
                     ?>
-                        <table border="1" class="table-contenu">
+                        <table border="1" class="table_contenu_commande">
                             <thead>
                                 <tr class="tab_bordure">    
                                     

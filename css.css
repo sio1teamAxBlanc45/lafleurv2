@@ -38,8 +38,6 @@ footer{
   padding-bottom: 7%;
 }
 
-
-
 .menu{
   background-color: #7fffd4;
   width: auto;
@@ -130,7 +128,6 @@ footer{
   padding-left: 2%;
   text-decoration: underline;
   color: blue;
-  
 }
 
 .link-lookalike-acceuil{
@@ -257,3 +254,4 @@ textarea.message_mail{
   align-content:flex-start;
   overflow:auto;
 }
+

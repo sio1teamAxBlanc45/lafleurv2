@@ -1,10 +1,10 @@
 <?php
   include 'Connexion.php';
   if (!isset($_SESSION["reference"]))
-    	{
-        		$_SESSION["reference"]=array();
-        		$_SESSION["quantite"]=array();
-    	}
+      {
+            $_SESSION["reference"]=array();
+            $_SESSION["quantite"]=array();
+      }
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +15,8 @@
         <title>Accueil Société Lafleur</title>
         <meta charset="UTF-8">
         <link href="css.css" rel="stylesheet">
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
         
         
@@ -93,7 +95,8 @@
 
       </div>
 
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <footer>
             <h2 class="pied_page">® copyrights Votre nom réalisé le ...</h2>
         </footer>

@@ -81,11 +81,9 @@
                 <div >
                     <?php
                        
-                       if(isset($sqltable)){
+                       if(isset($_SESSION["reference"])){
                        
-                       if ($nbligne1 !=0)
-                        {
-                    ?>
+                                           ?>
                         <table border="1" class="table-contenu">
                             <thead>
                                 <tr class="tab_bordure">    
@@ -129,12 +127,13 @@
                             </tr><?php
                             
                             
-                            }
+                            
                             
                     }
-                    if (empty($sqltable)){
+                    if (empty($_SESSION["reference"])){
                     	echo'Aucun article dans le panier';
                     }
+
                     
                     ?>      
                             </tbody>        

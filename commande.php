@@ -1,20 +1,8 @@
-  
 <?php
     require 'Connexion.php';
     session_start();
     
-    //if (isset($_SESSION['sql'])){
     
-    //$sql = $_SESSION['sql'];
-    //$table = $connection->query($sql) or die (print_r($connection->errorInfo()));
-    //$nbligne = $table->rowcount();
-    //$rowall = $table->fetchAll();
-    //}
-
-    $sqltable = "SELECT pdt_ref, pdt_designation, pdt_prix FROM produit WHERE pdt_ref ='".$_SESSION["reference"][0]."'";
-    $table1 = $connection->query($sqltable) or die (print_r($connection->errorInfo()));
-    $nbligne1 = $table1->rowcount();
-    $rowall1 = $table1->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -139,8 +127,15 @@
                                 <td class="tab_montTot"><?php echo $total ?> €</td>
 
                             </tr><?php
+                            
+                            
                             }
+                            
                     }
+                    if (empty($sqltable)){
+                    	echo'Aucun article dans le panier';
+                    }
+                    
                     ?>      
                             </tbody>        
                         </table>                

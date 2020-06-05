@@ -80,18 +80,9 @@
                 ?>
             </div>
             <hr class="new">
-            <form action="listpdt.php" method="get" class="bouton">
-              <input type="submit" value="Vider le panier"
-                  <?php 
-                  
-                  $vider = 'DELETE FROM panier';
-                  $vidPanier = $connection->exec($vider);
-                  
-                  ?>
-              >
-              
-             
-              
+            <form action="panier.php" method="get" class="bouton">
+              <input id="ajout" name="ajout" type="hidden" value="1">
+              <input type="submit" value="Vider le panier">
             </form>
             <br>
             <form action="commande.php" method="get" class="bouton">
@@ -158,7 +149,7 @@
                     <br>
                     <br>
                     
-                     
+                    <input id="ajout" name="ajout" type="hidden" value="0">
                     <input type="submit" value="Ajouter au panier">
                             
                     </form>

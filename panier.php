@@ -3,7 +3,7 @@ require 'Connexion.php';
 session_start();
 
 $a = False;
-if (isset($_POST['ajout'])){    
+if (isset($_GET['ajouter'])){    
     $produits = htmlentities($_REQUEST["produits"]);
     $quantite = htmlentities($_REQUEST["quantite"]);
     $i = count($_SESSION["reference"]);
@@ -18,7 +18,7 @@ if (isset($_POST['ajout'])){
     $_SESSION["quantite"][$i] = $quantite;
     }
     header("Location: listpdt.php");    
-}elseif(isset($_POST['vider'])){
+}elseif(isset($_GET['vider'])){
     unset($_SESSION["reference"],$_SESSION["quantite"]);
     header("Location: accueil.php");
 }else{

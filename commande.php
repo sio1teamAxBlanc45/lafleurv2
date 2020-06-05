@@ -3,18 +3,7 @@
     require 'Connexion.php';
     session_start();
     
-    if (isset($_SESSION['sql'])){
-    
-    $sql = $_SESSION['sql'];
-    $table = $connection->query($sql) or die (print_r($connection->errorInfo()));
-    $nbligne = $table->rowcount();
-    $rowall = $table->fetchAll();
-    }
 
-    $sqltable = "SELECT pdt_ref, pdt_designation, pdt_prix FROM produit WHERE pdt_ref ='b01'";
-    $table1 = $connection->query($sqltable) or die (print_r($connection->errorInfo()));
-    $nbligne1 = $table1->rowcount();
-    $rowall1 = $table1->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -111,25 +100,32 @@
                             </thead>
                             <tbody>
                     <?php
-                            foreach ($rowall as $row)
+                            $b = count($_SESSION["reference"]);
+                            $total = 0;
+                            for ($a = 0;$a<$b;$a++)
                             {
-                            
+                            $sqltable = "SELECT pdt_ref, pdt_designation, pdt_prix FROM produit WHERE pdt_ref ='".$_SESSION["reference"][$a]."'";
+                            $table1 = $connection->query($sqltable) or die (print_r($connection->errorInfo()));
+                            $nbligne1 = $table1->rowcount();
+                            $rowall1 = $table1->fetchAll();
+
                     ?>
                             <tr class="tab_bordure">
                                 
-                                <td> <?php echo $row['pdt_ref'] ?></td>
-                                <td> <?php echo $row['pdt_designation'] ?></td>
-                                <td class="tab_px"> <?php echo $row['pdt_prix'] ?> €</td>
-                                <td class="tab_qte"> XX</td>
-                                <td class="tab_mont"> XX €</td>
+                                <td> <?php echo $rowall1[0][0] ?></td>
+                                <td> <?php echo $rowall1[0]['pdt_designation'] ?></td>
+                                <td class="tab_px"> <?php echo $rowall1[0]['pdt_prix'] ?> €</td>
+                                <td class="tab_qte"> <?php echo $_SESSION["quantite"][$a] ?></td>
+                                <td class="tab_mont"> <?php echo $_SESSION["quantite"][$a] * $rowall1[0]['pdt_prix']?> €</td>
                             </tr>
                             
                     <?php 
+                                $total += $_SESSION["quantite"][$a] * $rowall1[0]['pdt_prix'];
                                 }?>
                                 <tr class="tab_bordure">
                                 
                                 <td colspan="4" class="total"> Total</td>
-                                <td class="tab_montTot">XX €</td>
+                                <td class="tab_montTot"><?php echo $total ?> €</td>
 
                             </tr><?php
                             }

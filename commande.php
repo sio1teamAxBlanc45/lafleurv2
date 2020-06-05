@@ -11,6 +11,10 @@
     $rowall = $table->fetchAll();
     }
 
+    $sqltable = "SELECT pdt_ref, pdt_designation, pdt_prix FROM produit WHERE pdt_ref ='b01'";
+    $table1 = $connection->query($sqltable) or die (print_r($connection->errorInfo()));
+    $nbligne1 = $table1->rowcount();
+    $rowall1 = $table1->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +79,7 @@
             </div>
             <hr class="new">
             <form action="panier.php" method="get" class="bouton">
-              <input type="submit" value="Vider le panier">
+              <input type="submit" value="Vider le panier" name="vider">
             </form>
             <br>
             <form action="commande.php" method="get" class="bouton">
@@ -89,12 +93,12 @@
                 <div >
                     <?php
                        
-                       if(isset($_SESSION['sql'])){
+                       if(isset($sqltable)){
                        
-                       if ($nbligne !=0)
+                       if ($nbligne1 !=0)
                         {
                     ?>
-                        <table border="1" class="table_contenu_commande">
+                        <table border="1" class="table-contenu">
                             <thead>
                                 <tr class="tab_bordure">    
                                     

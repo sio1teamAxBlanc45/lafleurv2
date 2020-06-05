@@ -2,18 +2,27 @@
 require 'Connexion.php';
 session_start();
 
-$ajout = htmlentities($_REQUEST["ajout"]);
-
-if ($ajout == 0){    
+$a = False;
+if (isset($_POST['ajout'])){    
     $produits = htmlentities($_REQUEST["produits"]);
     $quantite = htmlentities($_REQUEST["quantite"]);
     $i = count($_SESSION["reference"]);
+    for ($j=0;$j<$i;$j++) {
+        if ($_SESSION["reference"][$j] == $produits){
+            $a = True;
+            $_SESSION["quantite"][$j] += $quantite;
+        }
+    }
+    if ($a==False){
     $_SESSION["reference"][$i] = $produits;
     $_SESSION["quantite"][$i] = $quantite;
+    }
     header("Location: listpdt.php");    
-}else{
+}elseif(isset($_POST['vider'])){
     unset($_SESSION["reference"],$_SESSION["quantite"]);
     header("Location: accueil.php");
+}else{
+    echo '????';
 }
 
 ?>

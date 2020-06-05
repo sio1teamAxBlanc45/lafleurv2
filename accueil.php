@@ -1,5 +1,10 @@
 <?php
   include 'Connexion.php';
+  if (!isset($_SESSION["reference"]))
+    	{
+        		$_SESSION["reference"]=array();
+        		$_SESSION["quantite"]=array();
+    	}
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +15,6 @@
         <title>Accueil Société Lafleur</title>
         <meta charset="UTF-8">
         <link href="css.css" rel="stylesheet">
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 </head>
         
         
@@ -64,7 +68,7 @@
             </div>
             <hr class="new">
             <form action="panier.php" method="get" class="bouton">
-              <input type="submit" value="Vider le panier">
+              <input type="submit" value="Vider le panier" name="vider">
             </form>
             <br>
             <form action="commande.php" method="get" class="bouton">

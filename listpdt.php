@@ -81,8 +81,7 @@
             </div>
             <hr class="new">
             <form action="panier.php" method="get" class="bouton">
-              <input id="ajout" name="ajout" type="hidden" value="1">
-              <input type="submit" value="Vider le panier">
+              <input type="submit" value="Vider le panier" name="vider">
             </form>
             <br>
             <form action="commande.php" method="get" class="bouton">
@@ -148,9 +147,8 @@
                 
                     <br>
                     <br>
-                    
-                    <input id="ajout" name="ajout" type="hidden" value="0">
-                    <input type="submit" value="Ajouter au panier">
+
+                    <input type="submit" value="Ajouter au panier" name="ajouter">
                             
                     </form>
                 </div>                    

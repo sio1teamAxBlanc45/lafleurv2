@@ -1,8 +1,7 @@
+  
 <?php
     require 'Connexion.php';
     session_start();
-    
-    
 ?>
 
 <!DOCTYPE html>
@@ -14,12 +13,15 @@
         <meta charset="UTF-8">
         <link href="css.css" rel="stylesheet">
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
         
+        
+
     
     <body class='body'>
         
+        
+
         <div class="content">
           <div class="gauche">
             <div>
@@ -79,9 +81,9 @@
                     <?php
                        
                        if(isset($_SESSION["reference"])){
-                       
-                                           ?>
-                        <table border="1" class="table_contenu_commande">
+
+                    ?>
+                        <table border="1" class="table-contenu">
                             <thead>
                                 <tr class="tab_bordure">    
                                     
@@ -121,39 +123,40 @@
                                 <td colspan="4" class="total"> Total</td>
                                 <td class="tab_montTot"><?php echo $total ?> €</td>
 
-                            </tr>
+                            </tr><?php
+                            }
 
+                    if (empty($_SESSION["reference"])){
+                    	echo'Aucun article dans le panier';
+                    }
+                    ?>      
                             </tbody>        
                         </table>                
-
+         
+                
+                                   
+                </div>
                 <div>
+                    <form autocomplete="off" action="envoyer.php" method="get">
                     <label for="CodeClient">Code client :</label>
-                    <input type="text" id="CodeClient" name="CodeClient" required>
+                    <input autocomplete="off" type="text" id="CodeClient" name="CodeClient" required>
                     &nbsp; 
                     &nbsp; 
                     <label for="mdp">Mot de passe :</label>
-                    <input type="text" id="mdp" name="mdp" required>
+                    <input autocomplete="off" type="text" id="mdp" name="mdp" required>
                     <br>
                     <br>
-                    <form action="envoyer.php" method="get">
                         <input type="submit" value="Envoyer la commande">
                     </form>
-                </div>
-                    <?php 
-		            	}
-		                if (empty($_SESSION["reference"])){
-		                	echo "Pas d'article dans le panier.";
-		                }
-		            ?>
-                </div>
-            </div>
+                </div>        
+            </div>   
         </div>
 
      
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
         <footer>
-            <h2 class="pied_page">® copyrights Votre nom réalisé le ...</h2>
+            <h2 class="pied_page">® copyrights ... réalisé le </h2>
         </footer>
         
     </body>

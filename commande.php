@@ -2,7 +2,7 @@
     require 'Connexion.php';
     session_start();
     
-    
+
 
 ?>
 
@@ -134,7 +134,7 @@
 	                    &nbsp; 
 	                    &nbsp; 
 	                    <label for="mdp">Mot de passe :</label>
-	                    <input autocomplete="off" type="text" id="mdp" name="mdp" required>
+	                    <input autocomplete="off" type="password" id="mdp" name="mdp" required>
 	                    <br>
 	                    <br>
 	                    <input type="submit" value="Envoyer la commande">

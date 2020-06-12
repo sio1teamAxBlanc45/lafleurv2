@@ -16,7 +16,12 @@ $rowall = $table->fetchAll();
 var_dump(date("Y-m-d"));
 var_dump($rowall);
 if ($nbligne == 1 && $mdp == $rowall[0]['clt_motPasse']){
-    $sql4 = 'INSERT INTO commande VALUES( '.strtotime(date("y-m-d")).',"'.$Cclient.'",'.date("Y-m-d").')';
+    $strtime = strval(time());
+    $sql4 = 'INSERT INTO commande VALUES( '.$strtime.',"'.$Cclient.'","'.date("Y-m-d").'")';
     $table = $connection->exec($sql4) or die (print_r($connection->errorInfo()));   
+    for($i=0;$i<count($_SESSION["reference"]);$i++){
+        $sql5 = 'INSERT INTO contenir VALUES ('.$strtime.',"'.$Cclient.'","'.$_SESSION['reference'][$i].'","'.$_SESSION['quantite'][$i].'")';
+        $table = $connection->exec($sql5) or die (print_r($connection->errorInfo()));
+    }
 }
 ?>

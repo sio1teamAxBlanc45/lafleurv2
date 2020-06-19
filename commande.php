@@ -1,9 +1,11 @@
 <?php
     require 'Connexion.php';
     session_start();
-    
-
-
+    if (!isset($_SESSION['cliboo']))
+      {
+            $_SESSION['cliboo'] = True;
+            $_SESSION['mdpboo'] = True;
+      }
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +130,15 @@
                         </table>                
 
                 <div>
-                	<form autocomplete="off" action="envoyer.php" method="get">
+                    <?php 
+                    if($_SESSION['cliboo'] == False){
+                        echo "ce code client n'existe pas";
+                    } elseif ($_SESSION['mdpboo'] == False) {
+                        echo "le mot de passe est incorrect";
+                    }
+                        
+                    ?>
+                    <form autocomplete="off" action="envoyer.php" method="get">
 	                    <label for="CodeClient">Code client :</label>
 	                    <input autocomplete="off" type="text" id="CodeClient" name="CodeClient" required>
 	                    &nbsp; 

@@ -9,19 +9,29 @@ $sql3 = 'SELECT clt_motPasse FROM clientconnu WHERE clt_code = "'.$Cclient.'"';
 $table = $connection->query($sql3) or die (print_r($connection->errorInfo()));
 $nbligne = $table->rowcount();
 $rowall = $table->fetchAll();
+$_SESSION['cliboo'] = True;
+$_SESSION['mdpboo'] = True;
+
 //var_dump(date("Y-m-d"));
 //var_dump($rowall);
-if ($nbligne == 1 && $mdp == $rowall[0]['clt_motPasse']){
-    $strtime = strval(time());
-    $sql4 = 'INSERT INTO commande VALUES( '.$strtime.',"'.$Cclient.'","'.date("Y-m-d").'")';
-    $table = $connection->exec($sql4) or die (print_r($connection->errorInfo()));   
-    for($i=0;$i<count($_SESSION["reference"]);$i++){
-        $sql5 = 'INSERT INTO contenir VALUES ('.$strtime.',"'.$Cclient.'","'.$_SESSION['reference'][$i].'","'.$_SESSION['quantite'][$i].'")';
-        $table = $connection->exec($sql5) or die (print_r($connection->errorInfo()));
-    $resu = "Votre commande a bien été prise.";
-}
+if ($nbligne == 1 ){
+    if($mdp == $rowall[0]['clt_motPasse']){
+        $strtime = strval(time());
+        $sql4 = 'INSERT INTO commande VALUES( '.$strtime.',"'.$Cclient.'","'.date("Y-m-d").'")';
+        $table = $connection->exec($sql4) or die (print_r($connection->errorInfo()));   
+        for($i=0;$i<count($_SESSION["reference"]);$i++){
+            $sql5 = 'INSERT INTO contenir VALUES ('.$strtime.',"'.$Cclient.'","'.$_SESSION['reference'][$i].'","'.$_SESSION['quantite'][$i].'")';
+            $table = $connection->exec($sql5) or die (print_r($connection->errorInfo()));
+        }
+        $resu = "Votre commande a bien été prise.";
+        unset($_SESSION["reference"],$_SESSION["quantite"]);
+    }else{
+        $_SESSION['mdpboo'] = False;
+        header("Location: commande.php");
+    }
 }else{
-	$resu ="Accès refusé.";
+    $_SESSION['cliboo'] = False;
+    header("Location: commande.php");
 }
 
 ?>
